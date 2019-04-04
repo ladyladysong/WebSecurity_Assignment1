@@ -1,0 +1,54 @@
+
+<!--VULN autoescape should be true to sanitize user input and prevent Client reflected XSS-->
+{% autoescape true %}
+
+<!doctype html>
+<html>
+  <script src="./javascript/xss.js"></script>
+
+  <head>
+    <!-- Load header contents - stylesheet and page specific script -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./javascript/home.js"></script>
+    <title>Home Page</title>
+  </head>
+
+  <!-- Base script contains the theme setting code and is included on all pages -->
+  <script src="./javascript/base.js"></script>
+
+  <!-- Links to other pages -->
+  <a href="/register">Register</a>
+  <a href="/login">Login</a>
+
+  <!-- Core search functionality -->
+  <h3>Search Posts by category (news, sport, event)</h3>
+  <form method="POST" onsubmit="return submitSearch(this);">
+    Search: <input type="text" name="query" id="searchItem"></input>&nbsp;<input type="submit" value="Submit">
+  </form>
+
+  <!-- Search results section -->
+  <h2>Results</h2>
+  <div id="searchResults">
+    {# Check if the messages array has been set, and that it has some results #}
+    {% if messages and messages|length > 0 %}
+      {# Iterate though messages and output them #}
+      {% for msg in messages %}
+        <div class='resultitem'>
+          <p><b><i>{{ msg.id }}</i></b> posted:</p>
+          <div class='msg'>{{ msg.message }}</div>
+        </div>
+      {% endfor %}
+    {% else %}
+      {# No messages to show. If a query was submitted show not found msg, otherwise output instructions #}
+      {% if query %}
+        <b>{{ query }} not found</b>
+      {% else %}
+        <i>Enter search term to see results</i>
+      {% endif %}
+    {% endif %}
+
+  </div>
+  </body>
+
+</html>
+{% endautoescape %}

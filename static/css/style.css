@@ -1,0 +1,78 @@
+body {
+  font-family: arial;
+  text-align: center;
+}
+
+.resultitem {
+  background-color: #00c0ff58;
+  font-family: arial;
+  width: 500px;
+  border-style: solid;
+  border-width: 1px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+#searchResults {
+  padding: 10px;
+  margin: 10px;
+  text-align: center
+}
+
+.login {
+  background-color: #80808080;
+  border-style: outset;
+  border-width: 1px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  width: 500px
+}
+.login .label {
+  width:100px;
+}
+
+.addmsg {
+  background-color: #80808080;
+  border-style: outset;
+  border-width: 1px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  width: 600px
+}
+
+.addmsg textarea {
+  width: 100%;
+  font-family: arial;
+}
+
+.addmsg .label {
+  width: 100px;
+  display: inline-block;
+  text-align: right;
+}
+
+.label {
+  width: 50px;
+  display: inline-block;
+  text-align: right
+}
+
+.dark {
+  background-color: black;
+  color: white
+}
+
+.default {
+  background-color: white;
+  color: black
+}
+
+.themeselect {
+  position: absolute;
+  right: 15px;
+  top: 15px
+}

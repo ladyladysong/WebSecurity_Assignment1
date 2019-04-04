@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <script src="./javascript/xss.js"></script>
+
+  <head>
+    <!-- Load header contents - stylesheet and page specific script -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Login Page</title>
+  </head>
+
+  <!-- Base script contains the theme setting code and is included on all pages -->
+  <script src="./javascript/base.js"></script>
+
+  <!-- Links to other pages -->
+  <a href="/">Home</a>
+  <a href="/register">Register</a>
+
+
+  {% if user %}
+  {# User has logged in, show welcome and post message screen and logout link #}
+  <a href="/logout">Logout</a>
+  <h2>Welcome back {{ user.id }}</h2>
+  <div class="addmsg">
+    <h3>Post Message</h3>
+    <form method="POST" action="/postmessage">
+      <span class="label">category:</span><input type="text" name="category" id="category"></input><span class="label"></span><br><br>
+      <span class="label">message:</span><textarea id="message" name="message" rows="4"></textarea><span class="label"></span><br><br>
+      <input type="submit" value="Post">
+    </form>
+  </div>
+
+
+  {% else %}
+  {# No user logged in, show login screen #}
+  <div class="login">
+    <h3>Login</h3>
+    <form method="POST" action="login">
+      <span class="label">id:</span><input type="text" name="id" id="id"></input><span class="label"></span><br><br>
+      <span class="label">password:</span><input type="password" id="pwd" name="pwd"></input><span class="label"></span><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+
+  {% endif %}
+
+  </body>
+
+</html>

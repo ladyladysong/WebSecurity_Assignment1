@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <script src="./javascript/xss.js"></script>
+
+  <head>
+    <!-- Load header contents - stylesheet and page specific script -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./javascript/register.js"></script>
+    <title>Registration Page</title>
+  </head>
+
+  <!-- Base script contains the theme setting code and is included on all pages -->
+  <script src="./javascript/base.js"></script>
+
+  <!-- Links to other pages -->
+  <a href="/">Home</a>
+  <a href="/login">Login</a>
+  <div class="login">
+    <h3>Register</h3>
+    <form method="POST" action="./register">
+      <!-- onkeyup event on username fires each time a key is released causing a
+      check to be made with the server to see if the username is free -->
+      <span class="label">id:</span><input type="text" onkeyup="checkUsername(this)" name="id" id="id"></input><span class="label" id="usercheck"></span><br><br>
+      <span class="label">password:</span><input type="password" id="pwd" name="pwd"></input><span class="label"></span><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  </body>
+
+</html>
