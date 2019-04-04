@@ -41,16 +41,16 @@ if (window.location.hash) {
  * with the current theme selected.
  */
 if (localStorage.getItem("theme")) {
-  //VULN DOM Based XSS, user can inject code after # and be stored in document.write()
+
+  //VULN DOM Based XSS, user can inject malicious code after '#' and be stored in document.write()
+  document.write("<body class='" + encodeURIComponent(localStorage.getItem("theme")) + "'>");
+  createThemeChooser(localStorage.getItem("theme"));
+
   /**
    *   var finalTheme = themeFilter(localStorage.getItem("theme"));
   document.write("<body class='" + finalTheme + "'>"); 
   createThemeChooser(finalTheme);
    */
-  document.write("<body class='" + encodeURIComponent(localStorage.getItem("theme")) + "'>");
-  createThemeChooser(localStorage.getItem("theme"));
-  
-
 
 } else {
   document.write("<body class='default'>");
@@ -65,5 +65,4 @@ function themeFilter(inputTheme){
   }
   const finalTheme = secureFlag? inputTheme:after;
   return finalTheme;
-
 }

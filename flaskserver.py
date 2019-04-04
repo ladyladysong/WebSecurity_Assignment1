@@ -58,7 +58,7 @@ def username():
     req = request.get_json(force=True)
 
     cursor = connect_to_db()
-    #VULN SQL injection for executing untrusted code directly input by client
+    #VULN SQL injection for executing untrusted code directly input by client(stacked queris)
     sql = "SELECT id FROM users WHERE id = ?"
     cursor.execute(sql, [req['username']])
     user = cursor.fetchone()

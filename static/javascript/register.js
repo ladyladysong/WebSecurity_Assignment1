@@ -6,6 +6,8 @@
  *    True - the name exists and is not available
  *    False - the name does not exist and is available
  */
+var REGEXP_LT = /</g;
+var REGEXP_GT = />/g;
 function checkUsername(userElem) {
   var xhr = new XMLHttpRequest()
   xhr.onload = function() {
@@ -25,4 +27,8 @@ function checkUsername(userElem) {
     "username": escapeHtml(userElem.value)
   }));
   return false;
+}
+
+function escapeHtml(html) {
+  return html.replace(REGEXP_LT, "&lt;").replace(REGEXP_GT, "&gt;");
 }
